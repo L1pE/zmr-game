@@ -36,13 +36,18 @@
 	}
 	"7"
 	{
+		"label" "PLAY TUTORIAL"
+		"command" "engine map zmr_tutorial"
+	}
+	"8"
+	{
 		"label" "#GameUI_GameMenu_ActivateVR"
 		"command" "engine vr_activate"
 		//"InGameOrder" "40"
 		"OnlyWhenVREnabled" "1"
 		"OnlyWhenVRInactive" "1"
 	}
-	"8"
+	"9"
 	{
 		"label" "#GameUI_GameMenu_DeactivateVR"
 		"command" "engine vr_deactivate"
@@ -50,17 +55,17 @@
 		"OnlyWhenVREnabled" "1"
 		"OnlyWhenVRActive" "1"
 	}
-	"9"
+	"10"
 	{
 		"label" "#GameUI_GameMenu_Options"
 		"command" "OpenOptionsDialog"
 	}
-	"10"
+	"11"
 	{
 		"label" "ZM OPTIONS"
 		"command" "engine ToggleZMOptions"
 	}
-	"11"
+	"12"
 	{
 		"label" "#GameUI_GameMenu_Quit"
 		"command" "Quit"
