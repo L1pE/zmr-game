@@ -24,6 +24,26 @@ struct ZMTipQueue_T
 class CZMTip
 {
 public:
+    struct zmtip_param_t
+    {
+    public:
+        zmtip_param_t()
+        {
+            m_pszParam = nullptr;
+            m_iParamType = TIPPARAMTYPE_NONE;
+        }
+
+        ~zmtip_param_t()
+        {
+            delete[] m_pszParam;
+            m_pszParam = nullptr;
+        }
+
+        char* m_pszParam;
+        TipParamType_t m_iParamType;
+    };
+
+
     CZMTip( KeyValues* kv, int index );
     ~CZMTip();
     
@@ -63,7 +83,7 @@ public:
     static TipParamType_t TipNameToType( const char* );
     
 private:
-    void SetParam( const char* );
+    void AddParam( const char* );
 
 
     char* m_pszName;
@@ -87,8 +107,7 @@ private:
     int m_nShownPerGame;
 
 
-    char* m_pszParam;
-    TipParamType_t m_iParamType;
+    CUtlVector<zmtip_param_t*> m_vParams;
 };
 
 class CZMHudTooltip : public CHudElement, public vgui::Panel
