@@ -210,8 +210,26 @@ void CZMBaseCrosshair::LoadValues( KeyValues* kv )
     m_flOffsetFromCenter = kv->GetFloat( "offsetfromcenter" );
     m_flDotSize = kv->GetFloat( "dot" );
 
-    m_Color = kv->GetColor( "color" );
-    m_OutlineColor = kv->GetColor( "outlinecolor" );
+
+    // By default the GetColor will load 0,0,0,0 which is not good for us.
+    if ( kv->FindKey( "color", false ) )
+    {
+        m_Color = kv->GetColor( "color" );
+    }
+    else
+    {
+        m_Color = Color( 255, 255, 255, 255 );
+    }
+    
+
+    if ( kv->FindKey( "outlinecolor", false ) )
+    {
+        m_OutlineColor = kv->GetColor( "outlinecolor" );
+    }
+    else
+    {
+        m_OutlineColor = Color( 0, 0, 0, 255 );
+    }
 }
 
 void CZMBaseCrosshair::WriteValues( KeyValues* kv ) const
